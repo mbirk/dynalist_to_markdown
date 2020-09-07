@@ -1,0 +1,13 @@
+api_key: <YOUR API KEY HERE>
+pages:
+# Default configuration that applies to all documents, unless overridden below.
+- name: '*'
+  heading_depth: 2
+  include_notes: true
+  obsidian_internal_links: true
+# Ignore the Inbox.
+- name: Inbox
+  ignore: true
+# Create deeper headingsd for the Links page.
+- name: Links
+  heading_depth: 3
