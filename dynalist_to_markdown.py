@@ -26,7 +26,7 @@ class DynalistToMarkdown:
         self.fetch_files()
         self.process_files()
 
-    def document_to_markdown(self, path, node_by_id, config, out):
+    def document_to_markdown(self, node_by_id, config, out):
         for context in self.traverse_nodes(node_by_id, 'root'):
             node    = context[-1]
             content = node['content']
@@ -92,7 +92,7 @@ class DynalistToMarkdown:
         dir = os.path.dirname(path)
         pathlib.Path(self.directory, dir).mkdir(parents=True, exist_ok=True)
         with open(f'{self.directory}/{path}.md', 'w') as out:
-            self.document_to_markdown(path, node_by_id, config, out)
+            self.document_to_markdown(node_by_id, config, out)
 
     def request(self, api_path, **parameters):
         url = self.api_base + api_path
