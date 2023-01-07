@@ -31,6 +31,11 @@ class DynalistToMarkdown:
             node    = context[-1]
             content = node['content']
 
+            if config.include_notes:
+                note = node.get('note', '')
+                if note != '':
+                    content += f' ({note})'
+
             if config.obsidian_internal_links:
                 content = self.replace_markdown_links(content)
 
@@ -43,11 +48,6 @@ class DynalistToMarkdown:
                 print(f'{heading} {content}', file=out)
  
             else:
-                if config.include_notes:
-                    note = node.get('note', '')
-                    if note != '':
-                        content += f' ({note})'
-
                 indent = len(context) - config.heading_depth - 1
                 indent = '\t' * indent
                 print(f'{indent}- {content}', file=out)
