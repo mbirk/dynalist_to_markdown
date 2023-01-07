@@ -8,6 +8,6 @@ pages:
 # Ignore the Inbox.
 - name: Inbox
   ignore: true
-# Create deeper headingsd for the Links page.
+# Create deeper headings for the Links page.
 - name: Links
   heading_depth: 3
