@@ -39,16 +39,16 @@ class DynalistToMarkdown:
             if config.obsidian_internal_links:
                 content = self.replace_markdown_links(content)
 
-            if len(context) <= config.heading_depth:
-                if len(context) > 1:
-                    print(file=out)
- 
-                depth   = len(context)
-                heading = '#' * depth
-                print(f'{heading} {content}', file=out)
+            depth = len(context)
+            if depth <= config.heading_depth:
+                if depth > 1 or config.page_header:
+                    if depth > 1:
+                        print(file=out)
+                    heading = '#' * depth
+                    print(f'{heading} {content}', file=out)
  
             else:
-                indent = len(context) - config.heading_depth - 1
+                indent = depth - config.heading_depth - 1
                 indent = '\t' * indent
                 print(f'{indent}- {content}', file=out)
 
@@ -153,6 +153,7 @@ class DynalistToMarkdown:
         ignore                  : bool = None
         include_notes           : bool = None
         obsidian_internal_links : bool = None
+        page_header             : bool = None
 
         def match(self, page):
             return fnmatch.fnmatch(page, self.name)

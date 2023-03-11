@@ -46,6 +46,7 @@ using the following configuration settings.
 | `ignore`                  | Ignore this page -- don't generate Markdown for it. |
 | `include_notes`           | Whether to include the "notes" section of a Dynalist item. |
 | `obsidian_internal_links` | Whether to convert internal links to Obsidian-style notation (e.g. `[[Link]]`) |
+| `page_header`             | Whether to generate a top-level header with the page name.  You may want to enable this if you are not using the "Show inline title" option in Obsidian. |
 
 ## Usage
 
